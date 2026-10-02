@@ -9,7 +9,7 @@
       box-sizing: border-box;
       margin: 0;
       padding: 0;
-      -webkit-tap-highlight-color: transparent; /* 移除手機點擊藍色陰影 */
+      -webkit-tap-highlight-color: transparent;
     }
     body {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Microsoft JhengHei", sans-serif;
@@ -22,53 +22,50 @@
     }
     .card {
       background: #ffffff;
-      padding: 30px 20px;
+      padding: 35px 20px;
       border-radius: 20px;
       box-shadow: 0 10px 25px rgba(0,0,0,0.2);
       text-align: center;
       width: 100%;
-      max-width: 400px;
+      max-width: 420px;
     }
     h1 {
       color: #2d3748;
-      margin-bottom: 8px;
-      font-size: 1.6rem;
-    }
-    p.subtitle {
-      color: #718096;
-      font-size: 0.9rem;
       margin-bottom: 20px;
+      font-size: 1.8rem;
     }
     .prize-display {
       background: #f7fafc;
       border: 2px dashed #cbd5e0;
       border-radius: 12px;
       padding: 24px 12px;
-      margin-bottom: 20px;
-      min-height: 110px;
+      margin-bottom: 25px;
+      min-height: 120px;
       display: flex;
       justify-content: center;
       align-items: center;
-      font-size: 1.25rem;
+      font-size: 1.35rem;
       font-weight: bold;
       color: #2d3748;
       word-break: break-word;
     }
+    /* 加大後的抽獎按鈕 */
     .draw-btn {
       background: #48bb78;
       color: white;
       border: none;
-      padding: 16px;
-      font-size: 1.1rem;
+      padding: 20px 30px; /* 加大內邊距 */
+      font-size: 1.5rem;   /* 加大字體 */
       font-weight: bold;
       border-radius: 50px;
       cursor: pointer;
-      box-shadow: 0 4px 12px rgba(72, 187, 120, 0.4);
+      box-shadow: 0 6px 16px rgba(72, 187, 120, 0.45);
       width: 100%;
       touch-action: manipulation;
+      transition: transform 0.1s, background 0.2s;
     }
     .draw-btn:active {
-      transform: scale(0.96);
+      transform: scale(0.95);
       background: #38a169;
     }
     .draw-btn:disabled {
@@ -77,9 +74,9 @@
       transform: none;
     }
     .remaining-info {
-      margin-top: 16px;
-      font-size: 0.85rem;
-      color: #a0aec0;
+      margin-top: 20px;
+      font-size: 0.9rem;
+      color: #718096;
     }
   </style>
 </head>
@@ -87,11 +84,9 @@
 
   <div class="card">
     <h1>🎉 幸運大抽獎</h1>
-    <p class="subtitle">點擊下方按鈕啟動抽獎！</p>
 
-    <div id="prizeResult" class="prize-display">
-      準備好了嗎？點擊開始！
-    </div>
+    <!-- 顯示區域預設保持空白，抽獎時才會顯示內容 -->
+    <div id="prizeResult" class="prize-display"></div>
 
     <button id="drawBtn" class="draw-btn" onclick="drawPrize()">開始抽獎</button>
 
@@ -139,7 +134,7 @@
         const randomIndex = Math.floor(Math.random() * prizePool.length);
         const wonPrize = prizePool.splice(randomIndex, 1)[0];
 
-        resultDiv.textContent = `恭喜獲得：\n${wonPrize}`;
+        resultDiv.textContent = `恭喜獲得：${wonPrize}`;
         document.getElementById('remainingText').textContent = `剩餘總獎項數量：${prizePool.length} 個`;
 
         isDrawing = false;
