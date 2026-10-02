@@ -1,86 +1,85 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="zh-TW">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>線上幸運大抽獎</title>
   <style>
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
+      -webkit-tap-highlight-color: transparent; /* 移除手機點擊藍色陰影 */
     }
     body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Microsoft JhengHei", sans-serif;
       background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
       min-height: 100vh;
       display: flex;
       justify-content: center;
       align-items: center;
-      padding: 20px;
+      padding: 16px;
     }
     .card {
       background: #ffffff;
-      padding: 40px 30px;
+      padding: 30px 20px;
       border-radius: 20px;
-      box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
       text-align: center;
-      max-width: 450px;
       width: 100%;
+      max-width: 400px;
     }
     h1 {
-      color: #333;
-      margin-bottom: 10px;
-      font-size: 1.8rem;
+      color: #2d3748;
+      margin-bottom: 8px;
+      font-size: 1.6rem;
     }
     p.subtitle {
-      color: #666;
-      font-size: 0.95rem;
-      margin-bottom: 25px;
+      color: #718096;
+      font-size: 0.9rem;
+      margin-bottom: 20px;
     }
     .prize-display {
-      background: #f8f9fa;
+      background: #f7fafc;
       border: 2px dashed #cbd5e0;
       border-radius: 12px;
-      padding: 30px 15px;
-      margin-bottom: 25px;
-      min-height: 120px;
+      padding: 24px 12px;
+      margin-bottom: 20px;
+      min-height: 110px;
       display: flex;
       justify-content: center;
       align-items: center;
-      font-size: 1.4rem;
+      font-size: 1.25rem;
       font-weight: bold;
       color: #2d3748;
-      transition: all 0.3s ease;
+      word-break: break-word;
     }
     .draw-btn {
       background: #48bb78;
       color: white;
       border: none;
-      padding: 14px 28px;
+      padding: 16px;
       font-size: 1.1rem;
       font-weight: bold;
       border-radius: 50px;
       cursor: pointer;
       box-shadow: 0 4px 12px rgba(72, 187, 120, 0.4);
-      transition: transform 0.1s, background 0.2s;
       width: 100%;
-    }
-    .draw-btn:hover {
-      background: #38a169;
+      touch-action: manipulation;
     }
     .draw-btn:active {
-      transform: scale(0.98);
+      transform: scale(0.96);
+      background: #38a169;
     }
     .draw-btn:disabled {
       background: #a0aec0;
-      cursor: not-allowed;
       box-shadow: none;
+      transform: none;
     }
     .remaining-info {
-      margin-top: 20px;
+      margin-top: 16px;
       font-size: 0.85rem;
-      color: #718096;
+      color: #a0aec0;
     }
   </style>
 </head>
@@ -102,7 +101,6 @@
   </div>
 
   <script>
-    // 獎品池配置（4張500元禮物卡 + 7組中杯美式10杯）
     let prizePool = [
       "🎁 500元禮物卡",
       "🎁 500元禮物卡",
@@ -127,7 +125,6 @@
       const resultDiv = document.getElementById('prizeResult');
       btn.disabled = true;
 
-      // 模擬滾動效果
       let counter = 0;
       const tempPrizes = ["🎁 500元禮物卡", "☕ 中杯美式咖啡 10杯", "❓ 幸運大獎", "✨ 恭喜獲獎"];
       
@@ -136,21 +133,17 @@
         counter++;
       }, 80);
 
-      // 1.5 秒後開獎
       setTimeout(() => {
         clearInterval(interval);
 
-        // 隨機取出獎項
         const randomIndex = Math.floor(Math.random() * prizePool.length);
         const wonPrize = prizePool.splice(randomIndex, 1)[0];
 
-        // 顯示結果
-        resultDiv.textContent = `恭喜獲得：${wonPrize}`;
+        resultDiv.textContent = `恭喜獲得：\n${wonPrize}`;
         document.getElementById('remainingText').textContent = `剩餘總獎項數量：${prizePool.length} 個`;
 
         isDrawing = false;
 
-        // 若獎品抽完，更新按鈕狀態
         if (prizePool.length > 0) {
           btn.disabled = false;
         } else {
