@@ -1,9 +1,9 @@
-<!DOCTYPE html>
+ï»¿<!DOCTYPE html>
 <html lang="zh-TW">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>½u¤W©¯¹B¤j©â¼ú</title>
+  <title>ç·šä¸Šå¹¸é‹å¤§æŠ½çŽ</title>
   <style>
     * {
       box-sizing: border-box;
@@ -87,34 +87,34 @@
 <body>
 
   <div class="card">
-    <h1>?? ©¯¹B¤j©â¼ú</h1>
-    <p class="subtitle">ÂIÀ»¤U¤è«ö¶s±Ò°Ê©â¼ú¡I</p>
+    <h1>ðŸŽ‰ å¹¸é‹å¤§æŠ½çŽ</h1>
+    <p class="subtitle">é»žæ“Šä¸‹æ–¹æŒ‰éˆ•å•Ÿå‹•æŠ½çŽï¼</p>
 
     <div id="prizeResult" class="prize-display">
-      ·Ç³Æ¦n¤F¶Ü¡HÂIÀ»¶}©l¡I
+      æº–å‚™å¥½äº†å—Žï¼Ÿé»žæ“Šé–‹å§‹ï¼
     </div>
 
-    <button id="drawBtn" class="draw-btn" onclick="drawPrize()">¶}©l©â¼ú</button>
+    <button id="drawBtn" class="draw-btn" onclick="drawPrize()">é–‹å§‹æŠ½çŽ</button>
 
     <div id="remainingText" class="remaining-info">
-      ³Ñ¾lÁ`¼ú¶µ¼Æ¶q¡G11 ­Ó
+      å‰©é¤˜ç¸½çŽé …æ•¸é‡ï¼š11 å€‹
     </div>
   </div>
 
   <script>
-    // ¼ú«~¦À°t¸m¡]4±i500¤¸Â§ª«¥d + 7²Õ¤¤ªM¬ü¦¡10ªM¡^
+    // çŽå“æ± é…ç½®ï¼ˆ4å¼µ500å…ƒç¦®ç‰©å¡ + 7çµ„ä¸­æ¯ç¾Žå¼10æ¯ï¼‰
     let prizePool = [
-      "?? 500¤¸Â§ª«¥d",
-      "?? 500¤¸Â§ª«¥d",
-      "?? 500¤¸Â§ª«¥d",
-      "?? 500¤¸Â§ª«¥d",
-      "? ¤¤ªM¬ü¦¡©@°Ø 10ªM",
-      "? ¤¤ªM¬ü¦¡©@°Ø 10ªM",
-      "? ¤¤ªM¬ü¦¡©@°Ø 10ªM",
-      "? ¤¤ªM¬ü¦¡©@°Ø 10ªM",
-      "? ¤¤ªM¬ü¦¡©@°Ø 10ªM",
-      "? ¤¤ªM¬ü¦¡©@°Ø 10ªM",
-      "? ¤¤ªM¬ü¦¡©@°Ø 10ªM"
+      "ðŸŽ 500å…ƒç¦®ç‰©å¡",
+      "ðŸŽ 500å…ƒç¦®ç‰©å¡",
+      "ðŸŽ 500å…ƒç¦®ç‰©å¡",
+      "ðŸŽ 500å…ƒç¦®ç‰©å¡",
+      "â˜• ä¸­æ¯ç¾Žå¼å’–å•¡ 10æ¯",
+      "â˜• ä¸­æ¯ç¾Žå¼å’–å•¡ 10æ¯",
+      "â˜• ä¸­æ¯ç¾Žå¼å’–å•¡ 10æ¯",
+      "â˜• ä¸­æ¯ç¾Žå¼å’–å•¡ 10æ¯",
+      "â˜• ä¸­æ¯ç¾Žå¼å’–å•¡ 10æ¯",
+      "â˜• ä¸­æ¯ç¾Žå¼å’–å•¡ 10æ¯",
+      "â˜• ä¸­æ¯ç¾Žå¼å’–å•¡ 10æ¯"
     ];
 
     let isDrawing = false;
@@ -127,34 +127,34 @@
       const resultDiv = document.getElementById('prizeResult');
       btn.disabled = true;
 
-      // ¼ÒÀÀºu°Ê®ÄªG
+      // æ¨¡æ“¬æ»¾å‹•æ•ˆæžœ
       let counter = 0;
-      const tempPrizes = ["?? 500¤¸Â§ª«¥d", "? ¤¤ªM¬ü¦¡©@°Ø 10ªM", "? ©¯¹B¤j¼ú", "? ®¥³ßÀò¼ú"];
+      const tempPrizes = ["ðŸŽ 500å…ƒç¦®ç‰©å¡", "â˜• ä¸­æ¯ç¾Žå¼å’–å•¡ 10æ¯", "â“ å¹¸é‹å¤§çŽ", "âœ¨ æ­å–œç²çŽ"];
       
       const interval = setInterval(() => {
         resultDiv.textContent = tempPrizes[counter % tempPrizes.length];
         counter++;
       }, 80);
 
-      // 1.5 ¬í«á¶}¼ú
+      // 1.5 ç§’å¾Œé–‹çŽ
       setTimeout(() => {
         clearInterval(interval);
 
-        // ÀH¾÷¨ú¥X¼ú¶µ
+        // éš¨æ©Ÿå–å‡ºçŽé …
         const randomIndex = Math.floor(Math.random() * prizePool.length);
         const wonPrize = prizePool.splice(randomIndex, 1)[0];
 
-        // Åã¥Üµ²ªG
-        resultDiv.textContent = `®¥³ßÀò±o¡G${wonPrize}`;
-        document.getElementById('remainingText').textContent = `³Ñ¾lÁ`¼ú¶µ¼Æ¶q¡G${prizePool.length} ­Ó`;
+        // é¡¯ç¤ºçµæžœ
+        resultDiv.textContent = `æ­å–œç²å¾—ï¼š${wonPrize}`;
+        document.getElementById('remainingText').textContent = `å‰©é¤˜ç¸½çŽé …æ•¸é‡ï¼š${prizePool.length} å€‹`;
 
         isDrawing = false;
 
-        // ­Y¼ú«~©â§¹¡A§ó·s«ö¶sª¬ºA
+        // è‹¥çŽå“æŠ½å®Œï¼Œæ›´æ–°æŒ‰éˆ•ç‹€æ…‹
         if (prizePool.length > 0) {
           btn.disabled = false;
         } else {
-          btn.textContent = "¼ú¶µ¤w¥þ¼Æ©â§¹";
+          btn.textContent = "çŽé …å·²å…¨æ•¸æŠ½å®Œ";
         }
       }, 1500);
     }
